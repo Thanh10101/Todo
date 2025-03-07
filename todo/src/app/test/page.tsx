@@ -17,7 +17,8 @@ export default function Home() {
    setUser(prev=>({...prev, [name]: value}));
 };
   return (
-    <> <div>
+    <> <div> 
+      <div>UseState</div>
       <div>{JSON.stringify(user)}</div>
       <input type="username" name="username"   placeholder={user.username} onChange={handleChange}/>username
        <input type="password" name = "password"   placeholder={user.password} onChange={handleChange}/>password
