@@ -1,28 +1,47 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { useState, useCallback } from 'react'
+import CallbackChild from '../../../component/child_component/callback_child'
+interface User {
+  id: number,
+  first_name: string,
+  last_name: string
+}
+export default function UseCallback() {
 
+  const getData = useCallback((type: string): Promise<Response> => {
+    return fetch(`https://reqres.in/api/${type}`);
+  }, []);
+  const [user, setUser] = useState<User[]>([]);
 
-export default function Page() {
-    type Account ={
-        username: string;
-        password :string;
-    }
-    const ref = useRef<Account>({
-        username:"",
-        password:""
-    })
-    const handleClick =(e:React.ChangeEvent<HTMLInputElement>)=>{
-        const {name,value} = e.target
-        ref.current = { ...ref.current, [name]: value };
-    console.log(ref.current.username, ref.current.password);
-  
-    }
+  const handleData = () => {
+    getData('users')
+      .then((res) => res.json())
+      .then((res) => {
+        const users = res.data;
+        setUser(users);
+      })
+
+  }
   return (
     <>
-    <div>{JSON.stringify(ref)}</div>
-    <input name="username" type="text" onChange={handleClick}/>username
-    <input name="password" type="text" onChange={handleClick}/>password
-  
+      <div>Data</div>
+      <div>User{JSON.stringify(user)}</div>
+      <div>
+        Get info
+        {user && user.length > 0 ? (
+          <ul>
+            {user.map(
+              (u) => (
+                <li key={u.id}>
+                  {u.id}-{u.first_name}-{u.last_name}
+                </li>
+              )
+            )}
+          </ul>
+        ) : (<p>No users available</p>)}
+      </div>
+      <button type='button' onClick={handleData}>Get data</button>
+      <CallbackChild getData={getData}></CallbackChild>
     </>
   )
 }

@@ -1,4 +1,3 @@
-"use client"
 import Link from "next/link";
 // import { useRouter } from "next/router";
 // import { useReducer } from "react";
@@ -11,6 +10,7 @@ export default function LinkHome() {
    <>
    <div>Link component</div>
         <Link href="/useState">useState</Link><br></br>
+        <Link href="/useContext">useContext</Link><br></br>
         <Link href="/useMemo">useMemo</Link><br></br>
         <Link href="/useRef">useRef</Link><br></br>
         <Link href="/useCallback">useCallback</Link><br></br>

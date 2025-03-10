@@ -1,28 +1,14 @@
 "use client"
-import React, { useRef } from 'react'
+import ContextChild from "../../../component/child_component/context_child";
+import { AppProvider } from "../../../context/AppContext";
 
-
-export default function Page() {
-    type Account ={
-        username: string;
-        password :string;
-    }
-    const ref = useRef<Account>({
-        username:"",
-        password:""
-    })
-    const handleClick =(e:React.ChangeEvent<HTMLInputElement>)=>{
-        const {name,value} = e.target
-        ref.current = { ...ref.current, [name]: value };
-    console.log(ref.current.username, ref.current.password);
+export default function UseContext() {
   
-    }
   return (
     <>
-    <div>{JSON.stringify(ref)}</div>
-    <input name="username" type="text" onChange={handleClick}/>username
-    <input name="password" type="text" onChange={handleClick}/>password
-  
+      <AppProvider>    
+          <ContextChild />
+      </AppProvider>
     </>
-  )
+  );
 }

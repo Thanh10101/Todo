@@ -1,4 +1,4 @@
-"use client"
+
 import LinkHome from "../../component/route/link_home"
 import RouteHome from "../../component/route/useRouter_home";
 
