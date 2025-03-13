@@ -24,9 +24,9 @@ export default function UseCallback() {
   }
   return (
     <>
-      <div>Data</div>
-      <div>User{JSON.stringify(user)}</div>
-      <div>
+      <p>Data</p>
+      <p>User{JSON.stringify(user)}</p>
+      <p>
         Get info
         {user && user.length > 0 ? (
           <ul>
@@ -39,7 +39,7 @@ export default function UseCallback() {
             )}
           </ul>
         ) : (<p>No users available</p>)}
-      </div>
+      </p>
       <button type='button' onClick={handleData}>Get data</button>
       <CallbackChild getData={getData}></CallbackChild>
     </>

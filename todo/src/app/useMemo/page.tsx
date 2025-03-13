@@ -54,9 +54,9 @@ export default function Page() {
 
   return (
     <>
-      <div>Count: {count}</div>
+      <p>Count: {count}</p>
       <button type="button" onClick={() => setCount((prev) => prev + 1)}>Add</button>
-      <div>Number: {number ?? "Loading..."}</div>
+      <p>Number: {number ?? "Loading..."}</p>
     </>
   );
 }
